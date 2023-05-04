@@ -1,10 +1,25 @@
 
 <head>
+	//Below this is a script tag that loads an external JavaScript file from the URL https://talk.hyvor.com/embed/embed.js. The async attribute is used to indicate that the script should be downloaded asynchronously in the background, without blocking the page's rendering or other resources from being downloaded and displayed.
+//The type="module" attribute is used to indicate that the script is an ECMAScript module, which can use the import and export statements to interact with other modules. ECMAScript modules are a standard way of organizing and sharing code in JavaScript applications.
+//This particular script file is called "Hyvor Talk" and is used to embed a commenting system into a website. The script provides a customizable commenting widget that allows visitors to leave comments on the website's pages. The comments are managed and stored on the Hyvor Talk server, and can be moderated by the website owner or administrators.
+	
 	<script async src="https://talk.hyvor.com/embed/embed.js" type="module"></script>
+	
+	//Below This is a script tag that loads two ECMAScript modules from external URLs using the import statement.
+//The first module is imported from 'https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@4.7/src/modules/webflow-membership.js' and is assigned to a variable named WfuUserInfo and WfuUser. This module provides utility functions for working with Webflow's membership system, such as retrieving information about the current user.
+//The second module is imported from 'https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@4.7/src/modules/webflow-databind.min.js' and is assigned to a variable named WfuDataBinder. This module provides a data binding framework for Webflow, allowing you to bind data to elements on your page and automatically update those elements when the data changes.
+//Both of these modules are part of the webflow-util library, which is a set of utility functions and tools for building Webflow websites. By importing these modules, the script gains access to their functionality and can use them to interact with Webflow's membership system and data binding framework.
+		
 	<script type="module">
 	  import { WfuUserInfo, WfuUser } from 'https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@4.7/src/modules/webflow-membership.js'; 
 	  import { WfuDataBinder } from 'https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@4.7/src/modules/webflow-databind.min.js'; 
 	
+	//Below this is a piece of JavaScript code that defines an anonymous function using the jQuery library.
+//The function is invoked immediately after it is defined by calling $(function() {...});. This is a shorthand for the $(document).ready() function, which waits for the DOM to be fully loaded before executing the function.
+//Inside the function, a new instance of the WfuUserInfo class is created with an object as a parameter. The object contains a property userInfoUpdatedCallback which is set to a function named wfucallback. This means that when the WfuUserInfo object is initialized, it will call wfucallback whenever the user's information is updated.
+//Overall, this code initializes the WfuUserInfo object and sets up a callback function to be called whenever the user's information is updated.
+		
 	  $(function() {
 		var membership = new WfuUserInfo({
 		  userInfoUpdatedCallback: wfucallback

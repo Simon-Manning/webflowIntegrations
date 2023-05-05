@@ -1,24 +1,24 @@
 
 <head>
-	//Below this is a script tag that loads an external JavaScript file from the URL https://talk.hyvor.com/embed/embed.js. The async attribute is used to indicate that the script should be downloaded asynchronously in the background, without blocking the page's rendering or other resources from being downloaded and displayed.
-//The type="module" attribute is used to indicate that the script is an ECMAScript module, which can use the import and export statements to interact with other modules. ECMAScript modules are a standard way of organizing and sharing code in JavaScript applications.
-//This particular script file is called "Hyvor Talk" and is used to embed a commenting system into a website. The script provides a customizable commenting widget that allows visitors to leave comments on the website's pages. The comments are managed and stored on the Hyvor Talk server, and can be moderated by the website owner or administrators.
+		//Below this is a script tag that loads an external JavaScript file from the URL https://talk.hyvor.com/embed/embed.js. The async attribute is used to indicate that the script should be downloaded asynchronously in the background, without blocking the page's rendering or other resources from being downloaded and displayed.
+		//The type="module" attribute is used to indicate that the script is an ECMAScript module, which can use the import and export statements to interact with other modules. ECMAScript modules are a standard way of organizing and sharing code in JavaScript applications.
+		//This particular script file is called "Hyvor Talk" and is used to embed a commenting system into a website. The script provides a customizable commenting widget that allows visitors to leave comments on the website's pages. The comments are managed and stored on the Hyvor Talk server, and can be moderated by the website owner or administrators.
 	
 	<script async src="https://talk.hyvor.com/embed/embed.js" type="module"></script>
 	
-	//Below This is a script tag that loads two ECMAScript modules from external URLs using the import statement.
-//The first module is imported from 'https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@4.7/src/modules/webflow-membership.js' and is assigned to a variable named WfuUserInfo and WfuUser. This module provides utility functions for working with Webflow's membership system, such as retrieving information about the current user.
-//The second module is imported from 'https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@4.7/src/modules/webflow-databind.min.js' and is assigned to a variable named WfuDataBinder. This module provides a data binding framework for Webflow, allowing you to bind data to elements on your page and automatically update those elements when the data changes.
-//Both of these modules are part of the webflow-util library, which is a set of utility functions and tools for building Webflow websites. By importing these modules, the script gains access to their functionality and can use them to interact with Webflow's membership system and data binding framework.
+		//Below This is a script tag that loads two ECMAScript modules from external URLs using the import statement.
+		//The first module is imported from 'https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@4.7/src/modules/webflow-membership.js' and is assigned to a variable named WfuUserInfo and WfuUser. This module provides utility functions for working with Webflow's membership system, such as retrieving information about the current user.
+		//The second module is imported from 'https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@4.7/src/modules/webflow-databind.min.js' and is assigned to a variable named WfuDataBinder. This module provides a data binding framework for Webflow, allowing you to bind data to elements on your page and automatically update those elements when the data changes.
+		//Both of these modules are part of the webflow-util library, which is a set of utility functions and tools for building Webflow websites. By importing these modules, the script gains access to their functionality and can use them to interact with Webflow's membership system and data binding framework.
 		
 	<script type="module">
 	  import { WfuUserInfo, WfuUser } from 'https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@4.7/src/modules/webflow-membership.js'; 
 	  import { WfuDataBinder } from 'https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@4.7/src/modules/webflow-databind.min.js'; 
 	
-	//Below this is a piece of JavaScript code that defines an anonymous function using the jQuery library.
-//The function is invoked immediately after it is defined by calling $(function() {...});. This is a shorthand for the $(document).ready() function, which waits for the DOM to be fully loaded before executing the function.
-//Inside the function, a new instance of the WfuUserInfo class is created with an object as a parameter. The object contains a property userInfoUpdatedCallback which is set to a function named wfucallback. This means that when the WfuUserInfo object is initialized, it will call wfucallback whenever the user's information is updated.
-//Overall, this code initializes the WfuUserInfo object and sets up a callback function to be called whenever the user's information is updated.
+		//Below this is a piece of JavaScript code that defines an anonymous function using the jQuery library.
+		//The function is invoked immediately after it is defined by calling $(function() {...});. This is a shorthand for the $(document).ready() function, which waits for the DOM to be fully loaded before executing the function.
+		//Inside the function, a new instance of the WfuUserInfo class is created with an object as a parameter. The object contains a property userInfoUpdatedCallback which is set to a function named wfucallback. This means that when the WfuUserInfo object is initialized, it will call wfucallback whenever the user's information is updated.
+		//Overall, this code initializes the WfuUserInfo object and sets up a callback function to be called whenever the user's information is updated.
 		
 	  $(function() {
 		var membership = new WfuUserInfo({
@@ -26,6 +26,12 @@
 		}).init(); 
 	  });  
 	
+		//Below this is code that defines an `async` JavaScript function called `wfucallback` that takes in a `user` parameter. 
+		//Inside the function, a new `WfuDataBinder` object is created with an object literal that has a `user` property set to the `user` parameter. The `bind()` method is called on the `WfuDataBinder` object, which likely binds the data to some UI or component.
+		//After that, there is an `if` statement that checks whether the `WfuUser.current` object is not null. If it's not null, the `loadComments` function is called with the `user` parameter.
+		//It's not clear what the `loadComments` function does, but it's likely related to loading comments for the given `user`. 
+		//Overall, the `wfucallback` function seems to be setting up some data binding and loading comments for a user if the current user is not null.
+
 	  async function wfucallback(user) {
 		var dataBinder = new WfuDataBinder({
 		  user: user
@@ -51,6 +57,18 @@
 		  loading="manual"
 		  sso-user=""
 	  ></hyvor-talk-comments>
+
+			//Below This is a JavaScript function called loadComments that takes in a user parameter. The function starts by creating a new object called userData.
+			//If the user parameter is truthy (i.e., not null, undefined, false, 0, NaN, or an empty string), then userData is set to an object with the following properties:
+			//timestamp: The current Unix timestamp (number of seconds since January 1, 1970 00:00:00 UTC) in seconds.
+			//id: The user_id_alt property of the user object passed in.
+			//name: The name_short_tcase property of the user object passed in, or if it's falsy, the username derived from the email property by replacing everything after the '@' symbol with an empty string.
+			//email: The email property of the user object passed in.
+			//If the user parameter is falsy, then userData is set to an empty object.
+			//The userData object is then converted to a Base64-encoded JSON string using the btoa() function. This encoded string is then assigned back to the userData variable.
+			//Finally, the function selects the first <hyvor-talk-comments> element in the document and sets its sso-user attribute to the encoded userData string. The load() method is called on the hyvor-talk-comments element to load the comments using the provided user data.
+			//Based on the code, it seems that this function is used to load comments for a user in a Hyvor Talk comment widget, and the sso-user attribute is used to authenticate the user with Hyvor Talk's Single Sign-On (SSO) feature.
+
 		<script type="text/javascript">
 		  function loadComments(user) {
 			var userData = user ? {

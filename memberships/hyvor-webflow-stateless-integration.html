@@ -16,15 +16,15 @@
 	  import { WfuDataBinder } from 'https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@4.7/src/modules/webflow-databind.min.js'; 
 	
 		//Below this is a piece of JavaScript code that defines an anonymous function using the jQuery library.
-		//The function is invoked immediately after it is defined by calling $(function() {...});. This is a shorthand for the $(document).ready() function, which waits for the DOM to be fully loaded before executing the function.
+		//The function is invoked immediately after it is defined by calling the $(document).ready() function, which waits for the DOM to be fully loaded before executing the function.
 		//Inside the function, a new instance of the WfuUserInfo class is created with an object as a parameter. The object contains a property userInfoUpdatedCallback which is set to a function named wfucallback. This means that when the WfuUserInfo object is initialized, it will call wfucallback whenever the user's information is updated.
 		//Overall, this code initializes the WfuUserInfo object and sets up a callback function to be called whenever the user's information is updated.
 		
-	  $(function() {
-		var membership = new WfuUserInfo({
-		  userInfoUpdatedCallback: wfucallback
-		}).init(); 
-	  });  
+		$(document).ready(function() {
+  			var membership = new WfuUserInfo({
+    			userInfoUpdatedCallback: wfucallback
+ 			 }).init();
+			});  
 	
 		//Below this is code that defines an `async` JavaScript function called `wfucallback` that takes in a `user` parameter. 
 		//Inside the function, a new `WfuDataBinder` object is created with an object literal that has a `user` property set to the `user` parameter. The `bind()` method is called on the `WfuDataBinder` object, which likely binds the data to some UI or component.
